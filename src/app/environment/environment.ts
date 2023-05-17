@@ -1,11 +1,11 @@
 export const environment = {
     production: false,
     firebase: {
-      apiKey: "AIzaSyBBiGwgONg9nfsp-HGjyYUZ_xGtDtz-Qog",
-      authDomain: "instituto-a-r.firebaseapp.com",
-      projectId: "instituto-a-r",
-      storageBucket: "instituto-a-r.appspot.com",
-      messagingSenderId: "753328036617",
-      appId: "1:753328036617:web:9d50e07b92bc69f97591d8"
+      apiKey: "AIzaSyAbPRr4_ar1D3_VNX_ozSZfnVScCstH2fs",
+      authDomain: "institute-abbey-road.firebaseapp.com",
+      projectId: "institute-abbey-road",
+      storageBucket: "institute-abbey-road.appspot.com",
+      messagingSenderId: "242349462693",
+      appId: "1:242349462693:web:12d55f4dbdee9dc94ce94c"
     }
   };
