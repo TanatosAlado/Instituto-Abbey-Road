@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/proyecto-abbey-road",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
