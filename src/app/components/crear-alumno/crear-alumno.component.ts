@@ -16,7 +16,7 @@ export class CrearAlumnoComponent {
   id: string|null
   listAlumnos:Alumno[]=[]
 
-  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService, private router:Router,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute){
+  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute){
     this.form=this.fb.group({
       nombre:['',Validators.required],
       apellido:['',Validators.required],
@@ -31,7 +31,7 @@ export class CrearAlumnoComponent {
   }
 
   ngOnInit(): void {
-       this.agregarAlumno();
+       this.esEditar();
   }
 
 
@@ -46,81 +46,50 @@ export class CrearAlumnoComponent {
       curso: this.form.get('curso')?.value
     }
 
-    this._alumnoService.createStudent(user).then(()=>{
-      this._snackBar.open('El usuario ha sido creado correctamente', '', {
-        duration: 1500,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
+    let prueba=window.location;
+    if(prueba.href=="http://localhost:4200/crearAlumno"){
+      this._alumnoService.createStudent(user).then(()=> {
+        this._snackBar.open('El alumno fue agregado con exito', '', {
+          duration: 1500,
+          horizontalPosition: 'center',
+        })
+      }, error => {
+        console.log(error)
       })
-      this.form.reset()
-    }), (error: any)=>{console.log(error)};
-
-
-
-
-    
-  //   let prueba=window.location;
-  //   if(prueba.href=="http://localhost:4200/crearAlumno"){
-      
-  //     this._alumnoService.createStudent(user).subscribe(data => {
-  //       this._snackBar.open('El alumno fue agregado con exito', '', {
-  //         duration: 1500,
-  //         horizontalPosition: 'center',
-  //       })
-  //       this.form.reset()
-  //     }, error => {
-  //       console.log(error)
-  //       this.form.reset();
-  //     })
-  //   }
-  //   else{
-  //     if (this.id!==null){
-  //       this._alumnoService.updateStudent(user,this.id).subscribe(data=>{
-  //         this._snackBar.open('El alumno fue actualizado con exito', '', {
-  //           duration: 1500,
-  //           horizontalPosition: 'center',
-  //         })
-  //           this.listAlumnos=data
-  //           this.form.reset()
-  //       }, error => {
-  //         console.log(error)
-  //         this.form.reset();
-  //       })
+    }
+    else{
+      if (this.id!==null){
+        this._alumnoService.updateStudent(this.id,user).then(data=>{
+          this._snackBar.open('El alumno fue actualizado con exito', '', {
+            duration: 1500,
+            horizontalPosition: 'center',
+          })
+            this.listAlumnos=data
+        }, error => {
+          console.log(error)
+        })
           
-  //     }
+      }
    
       
-  //   }
+    }
    
-  // }
-
-
-  
-  // esEditar() {
-  //   const user: Alumno = {
-  //     nombre: this.form.get('nombre')?.value,
-  //     apellido: this.form.get('apellido')?.value,
-  //     dni: this.form.get('dni')?.value,
-  //     domicilio: this.form.get('domicilio')?.value,
-  //     telefono: this.form.get('telefono')?.value,
-  //     mail: this.form.get('mail')?.value,
-  //     curso: this.form.get('curso')?.value
-  //   }
-  //   if (this.id !== null) {
-  //     this.titulo = 'Editar Alumno'
-  //     this._alumnoService.getStudentById(this.id).subscribe(data => {
-  //       this.form.setValue({
-
-  //         nombre: data.nombre,
-  //         apellido: data.apellido,
-  //         dni: data.dni,
-  //         domicilio: data.domicilio,
-  //         telefono: data.telefono,
-  //         mail: data.mail,
-  //         curso: data.curso
-  //       })
-  //     })
-  //   }
+  }
+  esEditar() {
+    if (this.id !== null) {
+      this.titulo = 'Editar Alumno'
+      this._alumnoService.getStudentById(this.id).subscribe(data => {
+        this.form.setValue({
+          nombre: data.nombre,
+          apellido: data.apellido,
+          dni: data.dni,
+          domicilio: data.domicilio,
+          telefono: data.telefono,
+          mail: data.mail,
+          curso: data.curso
+        })
+      })
+    }
   }
 } 
 
