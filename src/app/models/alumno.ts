@@ -1,21 +1,34 @@
 export class Alumno {
     id?: string;
-    nombre: string;
     apellido: string;
+    nombre: string;
     dni: number;
+    fechaNacimiento:Date;
     domicilio: string;
-    telefono: number;
-    mail: string;
-    curso: string;
+    celularPrincipal: number;
+    celularSecundario:number;
+    estudios:string;
+    fechaIngreso:Date;
+    fechaEgreso:Date;
+    nivelAlcanzado:string;
+    cuotaPaga:Array<any>
+    observaciones: Array<any>
+   
+    constructor( apellido: string,nombre: string, dni: number, fechaNacimiento:Date, domicilio: string, celularPrincipal: number, celularSecundario: number, estudios: string,fechaIngreso:Date,fechaEgreso:Date,nivelAlcanzado:string,cuotaPaga:string[], observaciones:Array<any>) {
 
-    constructor(nombre: string, apellido: string, dni: number, domicilio: string, telefono: number, mail: string, curso: string) {
-
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
-        this.mail = mail;
-        this.curso = curso;
+        this.apellido = apellido
+        this.nombre = nombre
+        this.dni = dni
+        this.fechaNacimiento=fechaNacimiento,
+        this.domicilio = domicilio
+        this.celularPrincipal=celularPrincipal
+        this.celularSecundario=celularSecundario
+        this.estudios =estudios
+        this.fechaIngreso =fechaIngreso
+        this.fechaEgreso =fechaEgreso
+        this.nivelAlcanzado=nivelAlcanzado
+        this.cuotaPaga=cuotaPaga,
+        this.observaciones=observaciones
+       
     }
 }

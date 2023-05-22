@@ -1,5 +1,5 @@
 .ancho {
-    width: 70%;
+    width: 40%;
 }
 
 .container {
@@ -9,3 +9,6 @@
 img {
     margin-right: 25%;
 }
+mat-form-field {
+    margin-right: 12px;
+  }
