@@ -4,57 +4,121 @@
         <span>{{titulo}}</span>
     </mat-toolbar>
 
-    <mat-card style="margin-top: 10px;">
+    <mat-card style="margin-top: 35px;">
         <form [formGroup]="form" (ngSubmit)="agregarAlumno()">
             <mat-grid-list cols="4" rowHeight="70px">
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Nombre</mat-label>
-                        <input matInput autocomplete="off" formControlName="nombre">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="3" [rowspan]="7">
-                    <img src="../../../../../assets/img/usuario.png" width="15%">
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Apellido</mat-label>
                         <input matInput autocomplete="off" formControlName="apellido">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <!-- <mat-grid-tile [colspan]="3" [rowspan]="7">
+                    <img src="../../../../../assets/img/usuario.png" width="15%">
+                </mat-grid-tile> -->
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput autocomplete="off" formControlName="nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>DNI</mat-label>
                         <input matInput autocomplete="off" formControlName="dni">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho example-full-width">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" [min]="minimo" [max]="maximo" formControlName="fechaNacimiento">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker">
+                          <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Domicilio</mat-label>
                         <input matInput autocomplete="off" formControlName="domicilio">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
-                        <mat-label>Telefono</mat-label>
-                        <input matInput autocomplete="off" formControlName="telefono">
+                        <mat-label>Celular Principal</mat-label>
+                        <input matInput autocomplete="off" formControlName="celularPrincipal">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
-                        <mat-label>Mail</mat-label>
-                        <input matInput autocomplete="off" formControlName="mail">
+                        <mat-label>Celular Secundario</mat-label>
+                        <input matInput autocomplete="off" formControlName="celularSecundario">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Curso</mat-label>
-                        <input matInput autocomplete="off" formControlName="curso">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho example-full-width">
+                        <mat-label>Estudios</mat-label>
+                        <select matNativeControl autocomplete="off" formControlName="estudios">
+                          <option value="Primario">Primario</option>
+                          <option value="Secundario">Secundario</option>
+                          <option value="Terciario">Terciario</option>
+                          <option value="Universitario">Universitario</option>
+                        </select>
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho example-full-width">
+                        <mat-label>Fecha de Ingreso</mat-label>
+                        <input matInput [matDatepicker]="picker1" [min]="minimo" [max]="maximo" formControlName="fechaIngreso">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                            <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                </mat-grid-tile>
+                 <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho example-full-width">
+                        <mat-label>Fecha de Egreso</mat-label>
+                        <input matInput [matDatepicker]="picker2" [min]="minimo" [max]="maximo" formControlName="fechaEgreso">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker2">
+                          <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </mat-grid-tile> 
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho example-full-width">
+                        <mat-label>Nivel Alcanzado</mat-label>
+                        <select matNativeControl autocomplete="off" formControlName="nivelAlcanzado">
+                          <option value="A1">A1</option>
+                          <option value="A2">A2</option>
+                          <option value="B1">B1</option>
+                          <option value="B2">B2</option>
+                          <option value="C1">C1</option>
+                          <option value="C2">C2</option>
+                        </select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Última Cuota Paga</mat-label>
+                        <input matInput autocomplete="off" formControlName="cuotaPaga">
+                    </mat-form-field>
+                </mat-grid-tile>
+                 <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Observaciones</mat-label>
+                        <textarea matInput autocomplete="off" formControlName="observaciones"
+                                  cdkTextareaAutosize
+                                  #autosize="cdkTextareaAutosize"
+                                  cdkAutosizeMinRows="1"
+                                  cdkAutosizeMaxRows="5"></textarea>
+                      </mat-form-field>
+             </mat-grid-tile> 
+                <mat-grid-tile [colspan]="4" [rowspan]="2">
                     <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
-                    <button mat-raised-button style="margin-right: 20px;" routerLink="/alumnos">Volver</button>
+                    <button mat-raised-button style="margin-left: 20px;" routerLink="/alumnos">Volver</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
