@@ -3,7 +3,6 @@
     <mat-toolbar>
         <span>{{titulo}}</span>
     </mat-toolbar>
-
     <mat-card style="margin-top: 35px;">
         <form [formGroup]="form" (ngSubmit)="agregarAlumno()">
             <mat-grid-list cols="4" rowHeight="70px">
@@ -13,9 +12,6 @@
                         <input matInput autocomplete="off" formControlName="apellido">
                     </mat-form-field>
                 </mat-grid-tile>
-                <!-- <mat-grid-tile [colspan]="3" [rowspan]="7">
-                    <img src="../../../../../assets/img/usuario.png" width="15%">
-                </mat-grid-tile> -->
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Nombre</mat-label>
