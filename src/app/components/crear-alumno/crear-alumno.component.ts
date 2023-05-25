@@ -63,7 +63,6 @@ export class CrearAlumnoComponent {
 
 
   agregarAlumno() {
-    const fecha=new Date()
     const user: Alumno = {
       apellido: this.form.get('apellido')?.value,
       nombre: this.form.get('nombre')?.value,

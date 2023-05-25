@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
+
 //IMPORT ANGULAR MATERIAL
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -73,7 +74,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatSelectModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class SharedModule { }
