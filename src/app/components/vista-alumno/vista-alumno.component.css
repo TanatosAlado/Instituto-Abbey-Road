@@ -1,0 +1,22 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+h3{
+    text-align: center;
+}
+
+.ancho {
+    width: 40%;
+}
+
+.container {
+    margin-top: 5px;
+}
+
+mat-label {
+    background-color: lightgrey;
+    height: 70px;
+  }
+
+p{
+    text-align: center;
+}

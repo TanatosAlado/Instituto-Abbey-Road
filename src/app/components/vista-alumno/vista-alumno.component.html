@@ -1,8 +1,106 @@
-<form *ngFor="let alumno of listAlumnos">
+
+
+    <!-- <form *ngFor="let alumno of listAlumnos">
     
         
-
-             <input {{alumno.nombre}}>
+        <h3>Ficha del alumno {{alumno.nombre }} {{alumno.apellido }}  </h3>
+                     
+       
+      
+        <div class="row">
+            <div class="col izquierda">Celu secundario{{alumno.celularSecundario}}</div>
+            <div class="col derecha">Nombre: {{alumno.nombre}}</div>
+        </div>
         
-   
-</form>
+        <div class="row">
+            <div class="col izquierda">Nivel: {{alumno.nivelAlcanzado}}</div>
+            <div class="col derecha">Cuotas pagar{{alumno.cuotaPaga}}</div>
+        </div>
+        <div class="row">
+            <div class="col izquierda">Nivel: {{alumno.nivelAlcanzado}}</div>
+            <div class="col derecha">Cuotas pagar{{alumno.cuotaPaga}}</div>
+        </div>
+        <div class="row">
+            <div class="col izquierda">Observaciones: {{alumno.observaciones}}</div>
+            <div class="col derecha">Cuotas pagar{{alumno.cuotaPaga}}</div>
+        </div>
+        
+        <button class="btn btn-secondary">Botón de Bootstrap</button>
+           
+        </form> -->
+
+
+        <mat-card style="margin-top: 35px;">
+            <form *ngFor="let alumno of listAlumnos">
+                <h3>Ficha del alumno {{alumno.nombre }} {{alumno.apellido }}  </h3>
+                <mat-grid-list cols="4" rowHeight="70px">
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>DNI:</strong> </p>  
+                            <p>{{alumno.dni}}</p> 
+                        </mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Fecha Nacimiento:</strong> </p>  
+                            <p>{{alumno.fechaNacimiento}}</p> 
+                        </mat-label>    
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Domicilio:</strong> </p>  
+                            <p>{{alumno.domicilio}}</p> 
+                        </mat-label>    
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Celular Principal:</strong> </p>  
+                            <p>{{alumno.celularPrincipal}}</p> 
+                        </mat-label>    
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>fecha ingreso:</strong> </p>  
+                            <p>{{alumno.fechaIngreso}}</p> 
+                        </mat-label>   
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>fecha egreso:</strong> </p>  
+                            <p>{{alumno.fechaEgreso}}</p> 
+                        </mat-label> 
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Estudios:</strong> </p>  
+                            <p>{{alumno.estudios}}</p> 
+                        </mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Celular Secundario:</strong> </p>  
+                            <p>{{alumno.celularSecundario}}</p> 
+                        </mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Nivel alcanzado:</strong> </p>  
+                            <p>{{alumno.nivelAlcanzado}}</p> 
+                        </mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Cuota paga:</strong> </p>  
+                            <p>{{alumno.cuotaPaga}}</p> 
+                        </mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-label class="ancho">
+                            <p><strong>Observaciones:</strong> </p>  
+                            <p>{{alumno.observaciones}}</p> 
+                        </mat-label>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <button class="btn btn-secondary">Volver</button>
+        </form> 
+        </mat-card>
