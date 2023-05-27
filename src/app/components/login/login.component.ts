@@ -26,9 +26,7 @@ export class LoginComponent {
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
     if (usuario == "admin" && password == "pass123") {
-      console.log('Antes de Fake')
       this.fakeLoggin();
-      console.log('Despues de Fake')
     }
     else {
       this.error();
@@ -44,12 +42,10 @@ export class LoginComponent {
   }
 
   fakeLoggin() {
-    console.log('-ingrese a Fake')
     this.loading = true
     setTimeout(() => {
       this.router.navigate(['alumnos'])
     }, 1500);
-    console.log('saliendo de Fake')
   }
 }
 

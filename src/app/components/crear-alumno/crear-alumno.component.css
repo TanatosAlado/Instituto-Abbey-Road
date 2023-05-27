@@ -2,6 +2,12 @@
     width: 40%;
 }
 
+.anchoObs {
+   width: 70%;
+    
+    
+}
+
 .container {
     margin-top: 5px;
 }
@@ -12,3 +18,5 @@ img {
 mat-form-field {
     margin-right: 12px;
   }
+
+ 

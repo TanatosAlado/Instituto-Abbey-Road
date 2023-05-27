@@ -15,6 +15,8 @@ import { environment } from './environment/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { VistaAlumnoComponent } from './components/vista-alumno/vista-alumno.component';
+import { DatePipe } from '@angular/common';
+
 
 
 @NgModule({
@@ -33,21 +35,24 @@ import { VistaAlumnoComponent } from './components/vista-alumno/vista-alumno.com
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDatepickerModule
 
   ],
   exports: [
     SharedModule,
     AngularFireModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
 
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+    DatePipe,
+     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ],
   bootstrap: [AppComponent],
+  
   
 })
 export class AppModule { }

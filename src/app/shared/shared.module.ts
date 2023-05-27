@@ -24,7 +24,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatMomentDateModule} from '@angular/material-moment-adapter';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+
+
 
 
 
@@ -52,7 +55,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatSelectModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    FormsModule
+    FormsModule,
+    ScrollingModule
   ],
   exports: [
     MatSlideToggleModule,
@@ -74,7 +78,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatSelectModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    FormsModule,
+    FormsModule,  
+    ScrollingModule
     
   ]
 })

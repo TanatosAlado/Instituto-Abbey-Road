@@ -1,20 +1,34 @@
 import { Component,ViewChild,NgZone} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data} from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {take} from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
+
+
+
+
+
 
 @Component({
   selector: 'app-crear-alumno',
   templateUrl: './crear-alumno.component.html',
   styleUrls: ['./crear-alumno.component.css'],
-})
+ 
+ })
 
 export class CrearAlumnoComponent {
+
+
+  cuotaPaga = new FormControl('');
+  mensaje=new FormControl()
+
+  toppingList: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto', 'Septiembre','Octubre','Noviembre','Diciembre'];
+  selected=this.toppingList
+
+
+  
   form:FormGroup
   titulo='Crear Alumno';
   loading=false
@@ -25,15 +39,20 @@ export class CrearAlumnoComponent {
   selectedOption: string;
   fechaEgreso:Date
   fechaObservacion:Date
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
-  triggerResize() {
-   
-    this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
-  }
-      
-  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone){
-    
+  formattedDate: string;
+  selectDate: Date
+  textoTextarea: string = '';
+  arrayValores:any[]=[]
 
+  //  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  // triggerResize() {
+   
+  //   this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
+  // }
+ 
+      
+  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe){
+    
     this.minimo = new Date(); 
     this.maximo = new Date();
     this.fechaObservacion=new Date();
@@ -48,9 +67,9 @@ export class CrearAlumnoComponent {
       celularSecundario:['',Validators.required],
       estudios:['',Validators.required],
       fechaIngreso:['',Validators.required],
-      fechaEgreso:['',Validators.required],
-      nivelAlcanzado:['',Validators.required],
-      cuotaPaga:['',Validators.required],
+      fechaEgreso:[''],
+      nivelAlcanzado:[''],
+      cuotaPaga:[''],
       observaciones:['']
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -61,9 +80,15 @@ export class CrearAlumnoComponent {
        this.esEditar();
   }
 
+  guardarComoArray() {
+    // Divide el contenido del textarea en un array utilizando saltos de línea como separador
+    this.arrayValores.push (`${this.datePipe.transform(new Date(),'dd/MM/yyyy')}: ${ this.textoTextarea}`);
+     console.log(this.arrayValores)
+     return this.arrayValores
+  }
 
   agregarAlumno() {
-    const user: Alumno = {
+     const user: Alumno = {
       apellido: this.form.get('apellido')?.value,
       nombre: this.form.get('nombre')?.value,
       dni: this.form.get('dni')?.value,
@@ -75,9 +100,11 @@ export class CrearAlumnoComponent {
       fechaIngreso:new Date(this.form.get('fechaIngreso')?.value),
       fechaEgreso:new Date(this.form.get('fechaEgreso')?.value),
       nivelAlcanzado:this.form.get('nivelAlcanzado')?.value,
-      cuotaPaga:this.form.get('cuotaPaga')?.value,
-      observaciones:[`${new Date}: ${this.form.get('observaciones')?.value}`]
-    }
+      cuotaPaga:(this.form.get('cuotaPaga')?.value),
+      observaciones:this.guardarComoArray()
+     }
+  
+ 
   
     this.loading = true;
     let prueba=window.location;
@@ -129,7 +156,7 @@ export class CrearAlumnoComponent {
           fechaEgreso:data.fechaEgreso.toDate(),
           nivelAlcanzado:data.nivelAlcanzado,       
           cuotaPaga: data.cuotaPaga,
-          observaciones:data.observaciones
+          observaciones:this.guardarComoArray()
         })
       })
     }
