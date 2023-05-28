@@ -25,6 +25,7 @@ export class AlumnoService {
   getStudents(): Observable<any> {
     return this.firestore.collection('Alumnos').snapshotChanges()
   }
+  
   deleteStudent(id: string): Promise<any> {
     return this.firestore.collection('Alumnos').doc(id).delete();
   }

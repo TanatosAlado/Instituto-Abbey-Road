@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno'
 import { AlumnoService } from '../../services/alumno.service'
 
+
 @Component({
   selector: 'app-listar-alumnos',
   templateUrl: './listar-alumnos.component.html',
@@ -72,15 +73,36 @@ export class AlumnosComponent {
       });
     })
   }
+
+  // eliminarAlumno(id: any) {
+  //   this._alumnoService.deleteStudent(id).then(() => {
+  //     this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
+  //       duration: 1500,
+  //       horizontalPosition: 'center',
+  //       verticalPosition: 'bottom'
+  //     })
+  //   }, error => {
+  //     console.log(error)
+  //   });
+  // }
+
   eliminarAlumno(id: any) {
-    this._alumnoService.deleteStudent(id).then(() => {
-      this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
-        duration: 1500,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      })
-    }, error => {
-      console.log(error)
-    });
+    const confirmacion = confirm('¿Estás seguro de que quieres eliminar a este alumno?');
+    if (confirmacion) {
+      this._alumnoService.deleteStudent(id).then(() => {
+        this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
+          duration: 1500,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+      }, error => {
+        console.log(error);
+      });
+    }
   }
+
+
+
+
+
 }
