@@ -35,7 +35,7 @@
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
                         <mat-label class="ancho">
                             <p><strong>fecha egreso:</strong> </p>  
-                            <p>{{ alumno.fechaEgreso.toDate() | date: 'dd/MM/yyyy' }}</p>
+                            <p>{{ alumno.fechaEgreso ? (alumno.fechaEgreso.toDate() | date: 'dd/MM/yyyy') : 'N/A' }}</p>
                         </mat-label> 
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="2" [rowspan]="1">

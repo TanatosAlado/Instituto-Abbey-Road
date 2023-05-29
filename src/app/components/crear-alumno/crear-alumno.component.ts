@@ -80,14 +80,24 @@ export class CrearAlumnoComponent {
        this.esEditar();
   }
 
+  // guardarComoArray() {
+  //   // Divide el contenido del textarea en un array utilizando saltos de línea como separador
+  //   this.arrayValores.push (`${this.datePipe.transform(new Date(),'dd/MM/yyyy')}: ${ this.textoTextarea}`);
+  //    return this.arrayValores
+  // }
+
   guardarComoArray() {
-    // Divide el contenido del textarea en un array utilizando saltos de línea como separador
-    this.arrayValores.push (`${this.datePipe.transform(new Date(),'dd/MM/yyyy')}: ${ this.textoTextarea}`);
-     console.log(this.arrayValores)
-     return this.arrayValores
+    if (this.textoTextarea) {
+      this.arrayValores.push(`${this.datePipe.transform(new Date(), 'dd/MM/yyyy')}: ${this.textoTextarea}`);
+    }
+    return this.arrayValores;
   }
 
   agregarAlumno() {
+
+    const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
+    const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
+
      const user: Alumno = {
       apellido: this.form.get('apellido')?.value,
       nombre: this.form.get('nombre')?.value,
@@ -98,7 +108,8 @@ export class CrearAlumnoComponent {
       celularSecundario: this.form.get('celularSecundario')?.value,
       estudios:this.form.get('estudios')?.value,
       fechaIngreso:new Date(this.form.get('fechaIngreso')?.value),
-      fechaEgreso:new Date(this.form.get('fechaEgreso')?.value),
+      // fechaEgreso:new Date(this.form.get('fechaEgreso')?.value),
+      fechaEgreso: fechaEgreso,
       nivelAlcanzado:this.form.get('nivelAlcanzado')?.value,
       cuotaPaga:(this.form.get('cuotaPaga')?.value),
       observaciones:this.guardarComoArray()
@@ -140,6 +151,8 @@ export class CrearAlumnoComponent {
   }
   esEditar() {
     if (this.id !== null) {
+      const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
+      const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
       this.titulo = 'Editar Alumno'
       this._alumnoService.getStudentById(this.id).subscribe(data => {
         this.loading=false
@@ -153,7 +166,7 @@ export class CrearAlumnoComponent {
           celularSecundario:data.celularSecundario,
           estudios:data.estudios,
           fechaIngreso:data.fechaIngreso.toDate(),
-          fechaEgreso:data.fechaEgreso.toDate(),
+          fechaEgreso:fechaEgreso,
           nivelAlcanzado:data.nivelAlcanzado,       
           cuotaPaga: data.cuotaPaga,
           observaciones:this.guardarComoArray()
