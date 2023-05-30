@@ -27,12 +27,12 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Fecha de Nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker" [min]="minimo" [max]="maximo" formControlName="fechaNacimiento">
+                        <input matInput [matDatepicker]="picker" [min]="minimo" [max]="maximo"
+                            formControlName="fechaNacimiento">
                         <mat-datepicker-toggle matIconSuffix [for]="picker">
-                        <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                            <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
                         </mat-datepicker-toggle>
-                        <mat-datepicker #picker 
-                        ></mat-datepicker>
+                        <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -57,35 +57,35 @@
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Estudios</mat-label>
                         <select matNativeControl autocomplete="off" formControlName="estudios">
-                        <option value="Primario">Primario</option>
-                        <option value="Secundario">Secundario</option>
-                        <option value="Terciario">Terciario</option>
-                        <option value="Universitario">Universitario</option>
+                            <option value="Primario">Primario</option>
+                            <option value="Secundario">Secundario</option>
+                            <option value="Terciario">Terciario</option>
+                            <option value="Universitario">Universitario</option>
                         </select>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Fecha de Ingreso</mat-label>
-                        <input matInput [matDatepicker]="picker1"  [min]="minimo" [max]="maximo" formControlName="fechaIngreso">
+                        <input matInput [matDatepicker]="picker1" [min]="minimo" [max]="maximo"
+                            formControlName="fechaIngreso">
                         <mat-datepicker-toggle matIconSuffix [for]="picker1">
                             <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
                         </mat-datepicker-toggle>
-                        <mat-datepicker #picker1 
-                        ></mat-datepicker>
+                        <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Fecha de Egreso</mat-label>
-                        <input matInput [matDatepicker]="picker2"[min]="minimo" [max]="maximo" formControlName="fechaEgreso">
+                        <input matInput [matDatepicker]="picker2" [min]="minimo" [max]="maximo"
+                            formControlName="fechaEgreso">
                         <mat-datepicker-toggle matIconSuffix [for]="picker2">
-                        <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                            <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
                         </mat-datepicker-toggle>
-                        <mat-datepicker #picker2
-                        ></mat-datepicker>
+                        <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
-                </mat-grid-tile> 
+                </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Nivel Alcanzado</mat-label>
@@ -102,24 +102,22 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Cuotas Pagas</mat-label>
-    <mat-select multiple formControlName="cuotaPaga"[(value)]="selected">
-        <mat-select-trigger>
-            {{cuotaPaga.value?.[0] || selected}} 
-        </mat-select-trigger>
-    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-    </mat-select>
+                        <mat-select multiple formControlName="cuotaPaga" [(value)]="selected">
+                            <!-- <mat-select-trigger>
+                                {{cuotaPaga.value?.[0] || selected}}
+                            </mat-select-trigger> -->
+                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
-                </mat-grid-tile> 
+                </mat-grid-tile>
                 <mat-grid-tile [colspan]="4" [rowspan]="3">
                     <mat-form-field class="anchoObs">
                         <mat-label>Observaciones</mat-label>
-                        <textarea matInput autocomplete="off" formControlName="observaciones" [(ngModel)]="textoTextarea"
-                                cdkTextareaAutosize
-                                #autosize="cdkTextareaAutosize"
-                                cdkAutosizeMinRows="1"
-                                cdkAutosizeMaxRows="5"></textarea> 
+                        <textarea matInput autocomplete="off" formControlName="observaciones"
+                            [(ngModel)]="textoTextarea" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
                     </mat-form-field>
-            </mat-grid-tile> 
+                </mat-grid-tile>
                 <mat-grid-tile [colspan]="4" [rowspan]="2">
                     <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
                     <button mat-raised-button style="margin-left: 20px;" routerLink="/alumnos">Volver</button>

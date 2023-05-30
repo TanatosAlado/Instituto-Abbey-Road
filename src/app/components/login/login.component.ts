@@ -22,10 +22,9 @@ export class LoginComponent {
   }
 
   ingresar() {
-
-    const usuario = this.form.value.usuario;
+    const usuario = this.form.value.usuario.toUpperCase();
     const password = this.form.value.password;
-    if (usuario == "admin" && password == "pass123") {
+      if (usuario == "ABBEYROAD" && password == "lemonpie") {
       this.fakeLoggin();
     }
     else {

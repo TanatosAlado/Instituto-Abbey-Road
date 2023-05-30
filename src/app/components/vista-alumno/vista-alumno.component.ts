@@ -24,8 +24,9 @@ export class VistaAlumnoComponent {
   
 
   ngOnInit(): void {
-     this.mostrarAlumno()
-}
+    this.listAlumnos = []
+    this.mostrarAlumno()
+  }
 
  mostrarAlumno() {
   let id=(window.location.pathname).slice(15)
