@@ -24,7 +24,6 @@ export class VistaAlumnoComponent {
   
 
   ngOnInit(): void {
-    this.listAlumnos = []
     this.mostrarAlumno()
   }
 
