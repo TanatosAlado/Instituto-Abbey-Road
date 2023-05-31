@@ -1,10 +1,11 @@
 import { Component,ViewChild,NgZone} from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Data} from '@angular/router';
+import { ActivatedRoute, Data, Router} from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -51,7 +52,7 @@ export class CrearAlumnoComponent {
   // }
  
       
-  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe){
+  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe,private router: Router,private spinner: NgxSpinnerService){
     
     this.minimo = new Date(); 
     this.maximo = new Date();
@@ -114,9 +115,6 @@ export class CrearAlumnoComponent {
       cuotaPaga:(this.form.get('cuotaPaga')?.value),
       observaciones:this.guardarComoArray()
      }
-  
- 
-  
     this.loading = true;
     let prueba=window.location;
     if(prueba.href=="http://localhost:4200/crearAlumno"){
@@ -126,6 +124,8 @@ export class CrearAlumnoComponent {
           duration: 1500,
           horizontalPosition: 'center',
         })
+      location.reload()
+    
       }, error => {
         this.loading=false
         console.log(error)
@@ -138,6 +138,10 @@ export class CrearAlumnoComponent {
             duration: 1500,
             horizontalPosition: 'center',
           })
+          setTimeout(() => {
+            this.spinner.show()
+            this.router.navigate(['alumnos'])
+          }, 2000);
             this.listAlumnos=data
         }, error => {
           console.log(error)
@@ -149,6 +153,7 @@ export class CrearAlumnoComponent {
     }
    
   }
+ 
   esEditar() {
     if (this.id !== null) {
       const fechaEgresoValue = this.form.get('fechaEgreso')?.value;

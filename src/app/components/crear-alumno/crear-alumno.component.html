@@ -9,7 +9,7 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Apellido</mat-label>
-                        <input matInput autocomplete="off" formControlName="apellido">
+                        <input type="text" matInput autocomplete="off" formControlName="apellido">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -21,7 +21,7 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>DNI</mat-label>
-                        <input matInput autocomplete="off" formControlName="dni">
+                        <input type="number"class="no-arrows" matInput autocomplete="off" formControlName="dni">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -44,13 +44,13 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Celular Principal</mat-label>
-                        <input matInput autocomplete="off" formControlName="celularPrincipal">
+                        <input type="number" matInput class="no-arrows"autocomplete="off" formControlName="celularPrincipal">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Celular Secundario</mat-label>
-                        <input matInput autocomplete="off" formControlName="celularSecundario">
+                        <input type="number" matInput class="no-arrows"matInput autocomplete="off" formControlName="celularSecundario">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -87,16 +87,9 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field class="ancho example-full-width">
-                        <mat-label>Nivel Alcanzado</mat-label>
-                        <select matNativeControl autocomplete="off" formControlName="nivelAlcanzado">
-                            <option value="A1">A1</option>
-                            <option value="A2">A2</option>
-                            <option value="B1">B1</option>
-                            <option value="B2">B2</option>
-                            <option value="C1">C1</option>
-                            <option value="C2">C2</option>
-                        </select>
+                        <mat-form-field class="ancho">
+                            <mat-label>Nivel Alcanzado</mat-label>
+                            <input matInput autocomplete="off" formControlName="nivelAlcanzado">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
