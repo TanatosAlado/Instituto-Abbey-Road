@@ -5,10 +5,6 @@ import { ActivatedRoute, Data, Router} from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { DatePipe } from '@angular/common';
-import { NgxSpinnerService } from 'ngx-spinner';
-
-
-
 
 
 
@@ -52,7 +48,7 @@ export class CrearAlumnoComponent {
   // }
  
       
-  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe,private router: Router,private spinner: NgxSpinnerService){
+  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe,private router: Router){
     
     this.minimo = new Date(); 
     this.maximo = new Date();
@@ -139,7 +135,6 @@ export class CrearAlumnoComponent {
             horizontalPosition: 'center',
           })
           setTimeout(() => {
-            this.spinner.show()
             this.router.navigate(['alumnos'])
           }, 2000);
             this.listAlumnos=data
