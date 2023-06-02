@@ -90,5 +90,9 @@ export class AlumnosComponent {
     }
   }
 
+  detalleAlumno(id: any){
+    
+  }
+
 
 }

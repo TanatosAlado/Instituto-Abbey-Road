@@ -40,6 +40,7 @@ export class CrearAlumnoComponent {
   selectDate: Date
   textoTextarea: string = '';
   arrayValores:any[]=[]
+  detallar:boolean;
 
   //  @ViewChild('autosize') autosize: CdkTextareaAutosize;
   // triggerResize() {
@@ -147,13 +148,29 @@ export class CrearAlumnoComponent {
       
     }
    
-  }
+  } //AgregarAlumno
+
  
   esEditar() {
     if (this.id !== null) {
+
+
+      //Cambiar con URL correcto
+      let prueba=window.location.pathname;
+      console.log(`pr: ${prueba}`)
+      let sol = prueba.slice(1,8)
+      
+
       const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
       const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
-      this.titulo = 'Editar Alumno'
+      // this.titulo = 'Editar Alumno'
+      if(sol == "detalle"){
+        this.titulo = 'Detallar Alumno'
+        this.form.disable()
+      }else {
+        this.titulo = 'Editar Alumno'
+        this.form.enable()
+      }
       this._alumnoService.getStudentById(this.id).subscribe(data => {
         this.loading=false
         this.form.setValue({
@@ -174,6 +191,8 @@ export class CrearAlumnoComponent {
       })
     }
   }
+
+
 } 
 
 

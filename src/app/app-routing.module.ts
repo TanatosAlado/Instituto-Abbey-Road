@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'alumnos',component:AlumnosComponent},
   {path:'crearAlumno',component:CrearAlumnoComponent},
   {path:'actualizarAlumno/:id',component:CrearAlumnoComponent},
+  {path:'detalleAlumno/:id',component:CrearAlumnoComponent},
    {path:'**',redirectTo:'',pathMatch:'full'}
 ];
 
