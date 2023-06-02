@@ -74,17 +74,6 @@ export class AlumnosComponent {
     })
   }
 
-  // eliminarAlumno(id: any) {
-  //   this._alumnoService.deleteStudent(id).then(() => {
-  //     this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
-  //       duration: 1500,
-  //       horizontalPosition: 'center',
-  //       verticalPosition: 'bottom'
-  //     })
-  //   }, error => {
-  //     console.log(error)
-  //   });
-  // }
 
   eliminarAlumno(id: any) {
     const confirmacion = confirm('¿Estás seguro de que quieres eliminar a este alumno?');
@@ -100,9 +89,6 @@ export class AlumnosComponent {
       });
     }
   }
-
-
-
 
 
 }

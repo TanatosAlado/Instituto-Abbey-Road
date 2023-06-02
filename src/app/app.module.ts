@@ -14,7 +14,6 @@ import { CrearAlumnoComponent } from './components/crear-alumno/crear-alumno.com
 import { environment } from './environment/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { VistaAlumnoComponent } from './components/vista-alumno/vista-alumno.component';
 import { DatePipe } from '@angular/common';
 
 
@@ -26,7 +25,6 @@ import { DatePipe } from '@angular/common';
     NavbarComponent,
     AlumnosComponent,
     CrearAlumnoComponent,
-    VistaAlumnoComponent
   ],
   imports: [
     BrowserModule,
