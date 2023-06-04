@@ -30,6 +30,11 @@ export class AlumnosComponent {
   
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
       this.paginator = mp;
+      this.paginator._intl.itemsPerPageLabel='Alumnos por Página'
+      this.paginator._intl.firstPageLabel="Primera Página"
+      this.paginator._intl.previousPageLabel="Página Anterior"
+      this.paginator._intl.nextPageLabel='Siguiente Página'
+      this.paginator._intl.lastPageLabel="Última Página"
       this.setDataSourceAttributes();
   }
   
