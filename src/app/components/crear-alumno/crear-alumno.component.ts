@@ -20,6 +20,7 @@ export class CrearAlumnoComponent {
 
   cuotaPaga = new FormControl('');
   mensaje=new FormControl()
+  buttonVisible:boolean=true
 
   toppingList: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto', 'Septiembre','Octubre','Noviembre','Diciembre'];
   selected=this.toppingList
@@ -167,6 +168,7 @@ export class CrearAlumnoComponent {
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
         this.form.disable()
+        this.buttonVisible=false
       }else {
         this.titulo = 'Editar Alumno'
         this.form.enable()
