@@ -12,7 +12,7 @@ export class Alumno {
     fechaEgreso:Date;
     nivelAlcanzado:string
     cuotaPaga:Array<any>;
-    observaciones:string[]=[]
+    observaciones:Array<any>
    
     constructor( apellido: string,nombre: string, dni: number, fechaNacimiento:Date, domicilio: string, celularPrincipal: number, celularSecundario: number, estudios: string,fechaIngreso:Date,fechaEgreso:Date,nivelAlcanzado="sin datos",cuotaPaga:Array<any>,observaciones:Array<string>) {
 
