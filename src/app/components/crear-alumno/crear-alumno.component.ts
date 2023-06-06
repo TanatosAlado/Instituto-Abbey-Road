@@ -24,8 +24,9 @@ export class CrearAlumnoComponent {
 
   cuotaPaga = new FormControl('');
   mensaje=new FormControl()
+  buttonVisible:boolean=true
 
-  toppingList: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto', 'Septiembre','Octubre','Noviembre','Diciembre'];
+  toppingList: string[] = ['Inscripción', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto', 'Septiembre','Octubre','Noviembre','Diciembre'];
   selected=this.toppingList
 
 
@@ -88,16 +89,28 @@ export class CrearAlumnoComponent {
   // }
 
   guardarComoArray() {
-    if (this.textoTextarea) {
-      this.arrayValores.push(`${this.datePipe.transform(new Date(), 'dd/MM/yyyy')}: ${this.textoTextarea}`);
+    const fechaActual = new Date();
+    const dia = fechaActual.getDate();
+    const mes = fechaActual.getMonth() + 1; 
+    const anio = fechaActual.getFullYear();
+    const fechaFormateada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${anio}`;
+    if (this.textoTextarea!="") {
+      this.arrayValores.push(`${fechaFormateada}: ${this.textoTextarea}`);
     }
     return this.arrayValores;
   }
+
+  mostrarArrayEnInput(observaciones) {
+  
+    return observaciones
+  }
+
 
   agregarAlumno() {
 
     const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
     const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
+
 
      const user: Alumno = {
       apellido: this.form.get('apellido')?.value,
@@ -170,10 +183,10 @@ export class CrearAlumnoComponent {
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
         this.form.disable()
-        }else {
-          this.titulo = 'Editar Alumno'
-          this.form.enable()
-          }
+      }else {
+        this.titulo = 'Editar Alumno'
+        this.form.enable()
+      }
       this._alumnoService.getStudentById(this.id).subscribe(data => {
         this.loading=false
         this.form.setValue({
@@ -189,8 +202,7 @@ export class CrearAlumnoComponent {
           fechaEgreso:fechaEgreso,
           nivelAlcanzado:data.nivelAlcanzado,       
           cuotaPaga: data.cuotaPaga,
-          // observaciones:this.guardarComoArray()
-          observaciones: data.observaciones,
+          observaciones:this.guardarComoArray()
         })
       })
     }

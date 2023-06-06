@@ -122,8 +122,8 @@
                     </mat-grid-tile> 
                 </div>
                 <mat-grid-tile [colspan]="4" [rowspan]="2">
-                    <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
-                    <button mat-raised-button style="margin-left: 20px;" routerLink="/alumnos">Volver</button>
+                    <button type="submit" [disabled]="form.invalid" *ngIf="buttonVisible" mat-raised-button color="primary">Aceptar</button>
+                    <button mat-raised-button style="margin-left: 20px;color: white; background-color: #673ab7;" routerLink="/alumnos">Volver</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
