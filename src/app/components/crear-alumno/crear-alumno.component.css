@@ -19,6 +19,7 @@ mat-form-field {
     margin-right: 12px;
   }
 
+
   input.no-arrows::-webkit-inner-spin-button,
   input.no-arrows::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -27,4 +28,9 @@ mat-form-field {
   
   input.no-arrows {
     -moz-appearance: textfield;
+  }
+
+  .observaciones{
+    display: flex;
+    flex-direction: column;
   }

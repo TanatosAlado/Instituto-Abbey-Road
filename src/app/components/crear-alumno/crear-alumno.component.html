@@ -103,14 +103,24 @@
                         </mat-select>
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="4" [rowspan]="3">
-                    <mat-form-field class="anchoObs">
-                        <mat-label>Observaciones</mat-label>
-                        <textarea matInput autocomplete="off" formControlName="observaciones"
-                            [(ngModel)]="textoTextarea" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                    </mat-form-field>
-                </mat-grid-tile>
+                <div class="observaciones">
+                    <mat-grid-tile [colspan]="2" [rowspan]="3">
+                        <mat-form-field class="anchoObs">
+                            <mat-label>Observaciones</mat-label>
+                            <textarea matInput autocomplete="off" formControlName="listaObs"
+                                [(ngModel)]="textoTextarea" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="3">
+                        <mat-form-field class="anchoObs">
+                            <mat-label>Observaciones</mat-label>
+                            <textarea matInput autocomplete="off" formControlName="observaciones"
+                                [(ngModel)]="textoTextarea" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                    </mat-grid-tile> 
+                </div>
                 <mat-grid-tile [colspan]="4" [rowspan]="2">
                     <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
                     <button mat-raised-button style="margin-left: 20px;" routerLink="/alumnos">Volver</button>

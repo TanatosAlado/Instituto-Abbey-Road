@@ -4,8 +4,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Data, Router} from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs, 'es-ES');
+import { Inject, LOCALE_ID } from '@angular/core';
 
 
 @Component({
@@ -49,8 +53,7 @@ export class CrearAlumnoComponent {
   // }
  
       
-  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe,private router: Router){
-    
+  constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe,private router: Router, @Inject(LOCALE_ID) private locale: string){
     this.minimo = new Date(); 
     this.maximo = new Date();
     this.fechaObservacion=new Date();
@@ -167,10 +170,10 @@ export class CrearAlumnoComponent {
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
         this.form.disable()
-      }else {
-        this.titulo = 'Editar Alumno'
-        this.form.enable()
-      }
+        }else {
+          this.titulo = 'Editar Alumno'
+          this.form.enable()
+          }
       this._alumnoService.getStudentById(this.id).subscribe(data => {
         this.loading=false
         this.form.setValue({
@@ -186,7 +189,8 @@ export class CrearAlumnoComponent {
           fechaEgreso:fechaEgreso,
           nivelAlcanzado:data.nivelAlcanzado,       
           cuotaPaga: data.cuotaPaga,
-          observaciones:this.guardarComoArray()
+          // observaciones:this.guardarComoArray()
+          observaciones: data.observaciones,
         })
       })
     }
