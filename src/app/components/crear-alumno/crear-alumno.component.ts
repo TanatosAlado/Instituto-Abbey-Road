@@ -46,12 +46,6 @@ export class CrearAlumnoComponent {
   textoTextarea: string = '';
   arrayValores:any[]=[]
   detallar:boolean;
-
-  //  @ViewChild('autosize') autosize: CdkTextareaAutosize;
-  // triggerResize() {
-   
-  //   this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
-  // }
  
       
   constructor( private fb:FormBuilder, private _alumnoService: AlumnoService,private _snackBar:MatSnackBar,private aRouter:ActivatedRoute,private _ngZone: NgZone, private datePipe:DatePipe,private router: Router, @Inject(LOCALE_ID) private locale: string){
@@ -82,29 +76,6 @@ export class CrearAlumnoComponent {
        this.esEditar();
   }
 
-  // guardarComoArray() {
-  //   // Divide el contenido del textarea en un array utilizando saltos de línea como separador
-  //   this.arrayValores.push (`${this.datePipe.transform(new Date(),'dd/MM/yyyy')}: ${ this.textoTextarea}`);
-  //    return this.arrayValores
-  // }
-
-  guardarComoArray() {
-    const fechaActual = new Date();
-    const dia = fechaActual.getDate();
-    const mes = fechaActual.getMonth() + 1; 
-    const anio = fechaActual.getFullYear();
-    const fechaFormateada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${anio}`;
-    if (this.textoTextarea!="") {
-      this.arrayValores.push(`${fechaFormateada}: ${this.textoTextarea}`);
-    }
-    return this.arrayValores;
-  }
-
-  mostrarArrayEnInput(observaciones) {
-  
-    return observaciones
-  }
-
 
   agregarAlumno() {
 
@@ -122,11 +93,10 @@ export class CrearAlumnoComponent {
       celularSecundario: this.form.get('celularSecundario')?.value,
       estudios:this.form.get('estudios')?.value,
       fechaIngreso:new Date(this.form.get('fechaIngreso')?.value),
-      // fechaEgreso:new Date(this.form.get('fechaEgreso')?.value),
       fechaEgreso: fechaEgreso,
       nivelAlcanzado:this.form.get('nivelAlcanzado')?.value,
       cuotaPaga:(this.form.get('cuotaPaga')?.value),
-      observaciones:this.guardarComoArray()
+      observaciones: this.form.get('observaciones')?.value
      }
     this.loading = true;
     let prueba=window.location;
@@ -173,13 +143,11 @@ export class CrearAlumnoComponent {
 
       //Cambiar con URL correcto
       let prueba=window.location.pathname;
-      console.log(`pr: ${prueba}`)
       let sol = prueba.slice(1,8)
       
 
       const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
       const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
-      // this.titulo = 'Editar Alumno'
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
         this.form.disable()
@@ -202,7 +170,7 @@ export class CrearAlumnoComponent {
           fechaEgreso:fechaEgreso,
           nivelAlcanzado:data.nivelAlcanzado,       
           cuotaPaga: data.cuotaPaga,
-          observaciones:this.guardarComoArray()
+          observaciones: data.observaciones
         })
       })
     }

@@ -12,9 +12,9 @@ export class Alumno {
     fechaEgreso:Date;
     nivelAlcanzado:string
     cuotaPaga:Array<any>;
-    observaciones:Array<any>
+    observaciones:string;
    
-    constructor( apellido: string,nombre: string, dni: number, fechaNacimiento:Date, domicilio: string, celularPrincipal: number, celularSecundario: number, estudios: string,fechaIngreso:Date,fechaEgreso:Date,nivelAlcanzado="sin datos",cuotaPaga:Array<any>,observaciones:Array<string>) {
+    constructor( apellido: string,nombre: string, dni: number, fechaNacimiento:Date, domicilio: string, celularPrincipal: number, celularSecundario: number, estudios: string,fechaIngreso:Date,fechaEgreso:Date,nivelAlcanzado="sin datos",cuotaPaga:Array<any>,observaciones: string) {
 
         this.apellido = apellido
         this.nombre = nombre
@@ -31,5 +31,6 @@ export class Alumno {
         this.observaciones=observaciones
        
     }
+    
 }
 

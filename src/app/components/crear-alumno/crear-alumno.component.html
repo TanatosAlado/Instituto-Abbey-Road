@@ -96,35 +96,22 @@
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Cuotas Pagas</mat-label>
                         <mat-select multiple formControlName="cuotaPaga" [(value)]="selected">
-                            <!-- <mat-select-trigger>
-                                {{cuotaPaga.value?.[0] || selected}}
-                            </mat-select-trigger> -->
                             <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </mat-grid-tile>
-                <div class="observaciones">
-                    <mat-grid-tile [colspan]="2" [rowspan]="3">
-                        <mat-form-field class="anchoObs">
-                            <mat-label>Observaciones</mat-label>
-                            <textarea matInput autocomplete="off" formControlName="listaObs"
-                                [(ngModel)]="textoTextarea" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                        </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="2" [rowspan]="3">
+                </mat-grid-tile>                
+                    <mat-grid-tile [colspan]="4" [rowspan]="3">
                         <mat-form-field class="anchoObs">
                             <mat-label>Observaciones</mat-label>
                             <textarea matInput autocomplete="off" formControlName="observaciones"
                                 [(ngModel)]="textoTextarea" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
                                 cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
                         </mat-form-field>
-                    </mat-grid-tile> 
-                </div>
-                <mat-grid-tile [colspan]="4" [rowspan]="2">
-                    <button type="submit" [disabled]="form.invalid" *ngIf="buttonVisible" mat-raised-button color="primary">Aceptar</button>
-                    <button mat-raised-button style="margin-left: 20px;color: white; background-color: #673ab7;" routerLink="/alumnos">Volver</button>
-                </mat-grid-tile>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="4" [rowspan]="2">
+                        <button type="submit" [disabled]="form.invalid" *ngIf="buttonVisible" mat-raised-button color="primary">Aceptar</button>
+                        <button mat-raised-button style="margin-left: 20px;color: white; background-color: #673ab7;" routerLink="/alumnos">Volver</button>
+                    </mat-grid-tile>
             </mat-grid-list>
         </form>
     </mat-card>

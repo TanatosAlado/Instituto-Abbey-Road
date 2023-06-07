@@ -4,8 +4,6 @@
 
 .anchoObs {
    width: 70%;
-    
-    
 }
 
 .container {
@@ -28,9 +26,4 @@ mat-form-field {
   
   input.no-arrows {
     -moz-appearance: textfield;
-  }
-
-  .observaciones{
-    display: flex;
-    flex-direction: column;
   }
