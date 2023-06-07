@@ -7,6 +7,7 @@ import { Alumno } from 'src/app/models/alumno'
 import { AlumnoService } from '../../services/alumno.service'
 
 
+
 @Component({
   selector: 'app-listar-alumnos',
   templateUrl: './listar-alumnos.component.html',
@@ -14,6 +15,8 @@ import { AlumnoService } from '../../services/alumno.service'
 })
 export class AlumnosComponent {
   listAlumnos: Alumno[] = []
+
+  public showConfirmationDialog = false;
 
 
   displayedColumns: string[] = ['apellido', 'nombre', 'dni', 'domicilio', 'celularPrincipal','nivelAlcanzado', 'acciones'];
@@ -79,21 +82,30 @@ export class AlumnosComponent {
     })
   }
 
-
-  eliminarAlumno(id: any) {
-    const confirmacion = confirm('¿Estás seguro de que quieres eliminar a este alumno?');
-    if (confirmacion) {
-      this._alumnoService.deleteStudent(id).then(() => {
-        this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
-          duration: 1500,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        });
-      }, error => {
-        console.log(error);
-      });
-    }
+  eliminarAlumno(id: any){
+    this.showConfirmationDialog = true;
   }
+
+
+  confirm(id: any) {
+    this._alumnoService.deleteStudent(id).then(() => {
+      this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+    }, error => {
+      console.log(error);
+    });
+    this.showConfirmationDialog = false;
+  }
+  
+  cancel() {
+    // Lógica para cancelar la acción
+    this.showConfirmationDialog = false;
+  }
+
+  
 
   detalleAlumno(id: any){
     
