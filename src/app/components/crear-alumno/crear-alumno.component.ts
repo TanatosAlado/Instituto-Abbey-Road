@@ -60,7 +60,7 @@ export class CrearAlumnoComponent {
       fechaNacimiento:['',Validators.required],
       domicilio:['',Validators.required],
       celularPrincipal:['',Validators.required],
-      celularSecundario:['',Validators.required],
+      celularSecundario:[''],
       estudios:['',Validators.required],
       fechaIngreso:['',Validators.required],
       fechaEgreso:[''],
@@ -108,8 +108,9 @@ export class CrearAlumnoComponent {
           duration: 1500,
           horizontalPosition: 'center',
         })
-      // location.reload()
-      this.reinicioForm();
+      setTimeout(() => {
+        this.router.navigate(['alumnos'])
+      }, 2000);
       }, error => {
         this.loading=false
         console.log(error)
@@ -132,11 +133,7 @@ export class CrearAlumnoComponent {
       }      
     }
    
-  } //AgregarAlumno
-
- reinicioForm(){
-  this.form.reset();
- }
+  } 
 
   esEditar() {
     if (this.id !== null) {
