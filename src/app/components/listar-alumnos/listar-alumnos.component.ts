@@ -15,6 +15,7 @@ import { AlumnoService } from '../../services/alumno.service'
 })
 export class AlumnosComponent {
   listAlumnos: Alumno[] = []
+  idDelete: string;
 
   public showConfirmationDialog = false;
 
@@ -84,11 +85,14 @@ export class AlumnosComponent {
 
   eliminarAlumno(id: any){
     this.showConfirmationDialog = true;
+    console.log(`idDelete en eliminar ${id}`)
+    this.idDelete = id;
   }
 
 
-  confirm(id: any) {
-    this._alumnoService.deleteStudent(id).then(() => {
+  confirm() {
+    console.log(`idDelete en confirm: ${this.idDelete}`)
+    this._alumnoService.deleteStudent(this.idDelete).then(() => {
       this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
         duration: 1500,
         horizontalPosition: 'center',
