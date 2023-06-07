@@ -23,8 +23,6 @@ export class AlumnosComponent {
   displayedColumns: string[] = ['apellido', 'nombre', 'dni', 'domicilio', 'celularPrincipal', 'acciones'];
   dataSource:MatTableDataSource<Alumno>;
  
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort) sort: MatSort
   private paginator: MatPaginator; ; private sort: MatSort;
 
   @ViewChild(MatSort) set matSort(ms: MatSort) {
@@ -33,14 +31,15 @@ export class AlumnosComponent {
   }
   
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-      this.paginator = mp;
-      this.paginator._intl.itemsPerPageLabel='Alumnos por Página'
-      this.paginator._intl.firstPageLabel="Primera Página"
-      this.paginator._intl.previousPageLabel="Página Anterior"
-      this.paginator._intl.nextPageLabel='Siguiente Página'
-      this.paginator._intl.lastPageLabel="Última Página"
-      this.setDataSourceAttributes();
-  }
+    this.paginator = mp;
+    this.paginator._intl.itemsPerPageLabel='Alumnos por Página'
+    this.paginator._intl.firstPageLabel="Primera Página"
+    this.paginator._intl.previousPageLabel="Página Anterior"
+    this.paginator._intl.nextPageLabel='Siguiente Página'
+    this.paginator._intl.lastPageLabel="Última Página"
+    this.setDataSourceAttributes();
+}
+
   
   setDataSourceAttributes() {
       this.dataSource.paginator = this.paginator;
@@ -61,6 +60,7 @@ export class AlumnosComponent {
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+
   }
 
   applyFilter(event: Event) {
@@ -85,13 +85,11 @@ export class AlumnosComponent {
 
   eliminarAlumno(id: any){
     this.showConfirmationDialog = true;
-    console.log(`idDelete en eliminar ${id}`)
     this.idDelete = id;
   }
 
 
   confirm() {
-    console.log(`idDelete en confirm: ${this.idDelete}`)
     this._alumnoService.deleteStudent(this.idDelete).then(() => {
       this._snackBar.open('El usuario ha sido eliminado correctamente', '', {
         duration: 1500,

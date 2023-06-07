@@ -108,8 +108,8 @@ export class CrearAlumnoComponent {
           duration: 1500,
           horizontalPosition: 'center',
         })
-      location.reload()
-    
+      // location.reload()
+      this.reinicioForm();
       }, error => {
         this.loading=false
         console.log(error)
@@ -128,16 +128,16 @@ export class CrearAlumnoComponent {
             this.listAlumnos=data
         }, error => {
           console.log(error)
-        })
-          
-      }
-   
-      
+        })   
+      }      
     }
    
   } //AgregarAlumno
 
- 
+ reinicioForm(){
+  this.form.reset();
+ }
+
   esEditar() {
     if (this.id !== null) {
 

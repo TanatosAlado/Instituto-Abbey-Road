@@ -48,12 +48,6 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Celular Secundario</mat-label>
-                        <input type="number" matInput class="no-arrows"matInput autocomplete="off" formControlName="celularSecundario">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Estudios</mat-label>
                         <select matNativeControl autocomplete="off" formControlName="estudios">
@@ -62,6 +56,12 @@
                             <option value="Terciario">Terciario</option>
                             <option value="Universitario">Universitario</option>
                         </select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Celular Secundario</mat-label>
+                        <input type="number" matInput class="no-arrows"matInput autocomplete="off" formControlName="celularSecundario">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
