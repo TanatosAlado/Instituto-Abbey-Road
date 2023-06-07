@@ -19,7 +19,7 @@ export class AlumnosComponent {
   public showConfirmationDialog = false;
 
 
-  displayedColumns: string[] = ['apellido', 'nombre', 'dni', 'domicilio', 'celularPrincipal','nivelAlcanzado', 'acciones'];
+  displayedColumns: string[] = ['apellido', 'nombre', 'dni', 'domicilio', 'celularPrincipal', 'acciones'];
   dataSource:MatTableDataSource<Alumno>;
  
   // @ViewChild(MatPaginator) paginator: MatPaginator;

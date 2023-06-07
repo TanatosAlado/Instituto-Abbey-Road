@@ -150,6 +150,7 @@ export class CrearAlumnoComponent {
       const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
+        this.buttonVisible=false
         this.form.disable()
       }else {
         this.titulo = 'Editar Alumno'

@@ -1,6 +1,7 @@
 table {
-    width: 100%;
-    margin-top: 10px;
+    /* width: 100%;
+    margin-top: 10px; */
+    margin: 0 auto;
 }
 
 th {
@@ -47,4 +48,8 @@ mat-form-field {
   .dialog-content button {
     margin-right: 10px;
     margin-top: 10px;
+  }
+
+  .mat-sort-header{
+    margin-top: 50%;
   }
