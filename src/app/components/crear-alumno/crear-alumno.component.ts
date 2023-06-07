@@ -100,7 +100,8 @@ export class CrearAlumnoComponent {
      }
     this.loading = true;
     let prueba=window.location;
-    if(prueba.href=="http://localhost:4200/crearAlumno"){
+    if(prueba.href=="https://institute-abbey-road.web.app/crearAlumno"){
+    // if(prueba.href=="http://localhost:4200/crearAlumno"){
       this._alumnoService.createStudent(user).then(()=> {
         this.loading = false;
         this._snackBar.open('El alumno fue agregado con exito', '', {
@@ -143,6 +144,7 @@ export class CrearAlumnoComponent {
 
       //Cambiar con URL correcto
       let prueba=window.location.pathname;
+      console.log(prueba)
       let sol = prueba.slice(1,8)
       
 
