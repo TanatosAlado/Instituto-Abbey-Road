@@ -15,6 +15,7 @@ import { environment } from './environment/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -25,6 +26,7 @@ import { DatePipe } from '@angular/common';
     NavbarComponent,
     AlumnosComponent,
     CrearAlumnoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
