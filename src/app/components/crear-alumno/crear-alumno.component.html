@@ -110,10 +110,12 @@
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="4" [rowspan]="2">
                         <button type="submit" [disabled]="form.invalid" *ngIf="buttonVisible" mat-raised-button color="primary">Aceptar</button>
-                        <button mat-raised-button style="margin-left: 20px;color: white; background-color: #673ab7;" routerLink="/alumnos">Volver</button>
+                        <button *ngIf="!esBloqueante" mat-raised-button style="margin-left: 20px;color: white; background-color: #673ab7;" routerLink="/alumnos">Volver</button>
+                        <button *ngIf="esBloqueante" class="buttonBlock" mat-raised-button color="primary" (click)="cerrar()">Volver</button>
+                        <div class="bloqueo" *ngIf="esBloqueante">
+                        </div>
                     </mat-grid-tile>
             </mat-grid-list>
         </form>
     </mat-card>
-
 </div>

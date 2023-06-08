@@ -26,6 +26,8 @@ export class CrearAlumnoComponent {
   mensaje=new FormControl()
   buttonVisible:boolean=true
 
+  esBloqueante: boolean=false
+
   toppingList: string[] = ['Inscripción', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto', 'Septiembre','Octubre','Noviembre','Diciembre'];
   selected=this.toppingList
 
@@ -76,6 +78,10 @@ export class CrearAlumnoComponent {
        this.esEditar();
   }
 
+  cerrar(){
+    this.esBloqueante=false
+    this.router.navigate(['alumnos'])
+  }
 
   agregarAlumno() {
 
@@ -141,7 +147,6 @@ export class CrearAlumnoComponent {
 
       //Cambiar con URL correcto
       let prueba=window.location.pathname;
-      console.log(prueba)
       let sol = prueba.slice(1,8)
       
 
@@ -150,10 +155,10 @@ export class CrearAlumnoComponent {
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
         this.buttonVisible=false
-        this.form.disable()
+        this.esBloqueante=true
       }else {
         this.titulo = 'Editar Alumno'
-        this.form.enable()
+        this.esBloqueante=false
       }
       this._alumnoService.getStudentById(this.id).subscribe(data => {
         this.loading=false
