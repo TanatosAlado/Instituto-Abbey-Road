@@ -49,6 +49,13 @@ mat-form-field {
   margin-right: 10px;
 }
 
-  /* .mat-sort-header{
-    margin-top: 50%;
-  } */
+ body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+ }
+
+ .container {
+  position: relative;
+  min-height: 100vh;
+}
