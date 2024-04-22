@@ -46,4 +46,8 @@ mat-form-field {
     -moz-appearance: textfield;
   }
 
-
+ .posBoton {
+  width: 65%;
+  display: flex;
+  justify-content: end;
+ }

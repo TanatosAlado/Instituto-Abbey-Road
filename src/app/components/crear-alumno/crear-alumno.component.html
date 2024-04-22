@@ -95,11 +95,18 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho example-full-width">
                         <mat-label>Cuotas Pagas</mat-label>
-                        <mat-select multiple formControlName="cuotaPaga" [(value)]="selected">
+                        <mat-select #cuotaPagaSelect multiple formControlName="cuotaPaga" [(value)]="selected">
                             <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </mat-grid-tile>                
+                </mat-grid-tile>  
+
+                <mat-grid-tile *ngIf="(titulo == 'Editar Alumno')" [colspan]="4" [rowspan]="1">
+                    <div class="posBoton">
+                        <button type="button" (click)="reiniciarPeriodo()" mat-raised-button style="color: white; background-color: #673ab7;">Reiniciar período</button>
+                    </div>
+                </mat-grid-tile>  
+
                     <mat-grid-tile [colspan]="4" [rowspan]="3">
                         <mat-form-field class="anchoObs">
                             <mat-label>Observaciones</mat-label>

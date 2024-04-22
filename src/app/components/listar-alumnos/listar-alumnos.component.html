@@ -1,5 +1,7 @@
+
 <app-navbar></app-navbar>
 <div class="container">
+   
     <mat-toolbar>
         <span>Alumnos</span>
         <div class="example-spacer"> </div>
@@ -59,12 +61,12 @@
 
                         <div class="confirmation-dialog" *ngIf="showConfirmationDialog">
                             <div class="dialog-content">
-                                <h4>¿Está seguro de que desea continuar?</h4>
-                                <div style="text-align: center;">
+                              <h4>¿Está seguro de que desea continuar?</h4>
+                              <div style="text-align: center;">
                                     <button mat-raised-button color="primary"
                                         (click)="confirm(element.id)">Confirmar</button>
-                                    <button mat-raised-button color="primary" (click)="cancel()">Cancelar</button>
-                                </div>
+                                <button mat-raised-button color="primary" (click)="cancel()">Cancelar</button>
+                              </div>
                             </div>
                         </div>
                     </td>
@@ -79,4 +81,3 @@
 
     <h2 *ngIf="listAlumnos.length==0">No hay alumnos para mostrar</h2>
 </div>
-<app-footer></app-footer>

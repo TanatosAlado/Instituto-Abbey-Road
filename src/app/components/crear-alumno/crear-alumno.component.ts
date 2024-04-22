@@ -10,6 +10,7 @@ import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs, 'es-ES');
 import { Inject, LOCALE_ID } from '@angular/core';
+import { MatSelect } from '@angular/material/select';
 
 
 @Component({
@@ -22,6 +23,7 @@ import { Inject, LOCALE_ID } from '@angular/core';
 export class CrearAlumnoComponent {
 
 
+  @ViewChild(MatSelect) cuotaPagaSelect!: MatSelect;
   cuotaPaga = new FormControl('');
   mensaje=new FormControl()
   buttonVisible:boolean=true
@@ -179,6 +181,13 @@ export class CrearAlumnoComponent {
         })
       })
     }
+  }
+
+  reiniciarPeriodo() {
+    // Deseleccionar todas las opciones en el mat-select de cuotaPaga
+    this.form.get('cuotaPaga')?.setValue([]);
+    // También puedes cerrar el panel del mat-select si es necesario
+    this.cuotaPagaSelect.close();
   }
 
 
