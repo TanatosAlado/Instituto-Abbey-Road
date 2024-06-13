@@ -60,17 +60,17 @@ export class CrearAlumnoComponent {
     this.form=this.fb.group({
       apellido:['',Validators.required],
       nombre:['',Validators.required],
-      dni:['',Validators.required],
-      fechaNacimiento:['',Validators.required],
-      domicilio:['',Validators.required],
-      celularPrincipal:['',Validators.required],
+      dni:[''],
+      fechaNacimiento:[''],
+      domicilio:[''],
+      celularPrincipal:[''],
       celularSecundario:[''],
-      estudios:['',Validators.required],
-      fechaIngreso:['',Validators.required],
+      estudios:[''],
+      fechaIngreso:[''],
       fechaEgreso:[''],
       nivelAlcanzado:[''],
       cuotaPaga:[''],
-      observaciones:['']
+      observaciones:[''],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
   
