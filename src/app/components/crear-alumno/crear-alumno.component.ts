@@ -61,12 +61,12 @@ export class CrearAlumnoComponent {
       apellido:['',Validators.required],
       nombre:['',Validators.required],
       dni:[''],
-      fechaNacimiento:['',Validators.required],
+      fechaNacimiento:[''],
       domicilio:[''],
       celularPrincipal:[''],
       celularSecundario:[''],
       estudios:[''],
-      fechaIngreso:['',Validators.required],
+      fechaIngreso:[''],
       fechaEgreso:[''],
       nivelAlcanzado:[''],
       cuotaPaga:[''],
@@ -87,25 +87,31 @@ export class CrearAlumnoComponent {
 
   agregarAlumno() {
 
-    const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
-    const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
+    // const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
+    // const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
 
+    
+    const fechaNac = this.form.get('fechaNacimiento')?.value? new Date(this.form.get('fechaNacimiento').value) : new Date()
+    const fechaIn = this.form.get('fechaIngreso')?.value? new Date(this.form.get('fechaIngreso').value) : new Date() 
+    const fechaEg = this.form.get('fechaEgreso')?.value? new Date(this.form.get('fechaEgreso').value) : null 
 
      const user: Alumno = {
       apellido: this.form.get('apellido')?.value,
       nombre: this.form.get('nombre')?.value,
       dni: this.form.get('dni')?.value,
-      fechaNacimiento:new Date(this.form.get('fechaNacimiento')?.value),
+      fechaNacimiento: fechaNac,
       domicilio: this.form.get('domicilio')?.value,
       celularPrincipal: this.form.get('celularPrincipal')?.value,
       celularSecundario: this.form.get('celularSecundario')?.value,
       estudios:this.form.get('estudios')?.value,
-      fechaIngreso:new Date(this.form.get('fechaIngreso')?.value),
-      fechaEgreso: fechaEgreso,
+      fechaIngreso: fechaIn,
+      fechaEgreso: fechaEg,
       nivelAlcanzado:this.form.get('nivelAlcanzado')?.value,
       cuotaPaga:(this.form.get('cuotaPaga')?.value),
       observaciones: this.form.get('observaciones')?.value
      }
+
+     console.log(`usuario: ${JSON.stringify(user)}`)
     this.loading = true;
     let prueba=window.location;
     if(prueba.href=="https://institute-abbey-road.web.app/crearAlumno"){
@@ -152,8 +158,8 @@ export class CrearAlumnoComponent {
       let sol = prueba.slice(1,8)
       
 
-      const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
-      const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
+ //     const fechaEgresoValue = this.form.get('fechaEgreso')?.value;
+  //    const fechaEgreso = fechaEgresoValue ? new Date(fechaEgresoValue) : null;
       if(sol == "detalle"){
         this.titulo = 'Detallar Alumno'
         this.buttonVisible=false
@@ -174,7 +180,7 @@ export class CrearAlumnoComponent {
           celularSecundario:data.celularSecundario,
           estudios:data.estudios,
           fechaIngreso:data.fechaIngreso.toDate(),
-          fechaEgreso:fechaEgreso,
+          fechaEgreso: data.fechaEgreso? data.fechaEgreso.toDate() : null, 
           nivelAlcanzado:data.nivelAlcanzado,       
           cuotaPaga: data.cuotaPaga,
           observaciones: data.observaciones
